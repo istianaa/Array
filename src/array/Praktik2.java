@@ -10,12 +10,26 @@ package array;
  * @author Anggi
  */
 public class Praktik2 extends javax.swing.JFrame {
-
+    String jns = ""; 
+    int jml;
     /**
      * Creates new form Praktik2
      */
     public Praktik2() {
         initComponents();
+        getJumlah();
+        setJenis();
+        panel.setVisible(false);
+        pilihanbil.setEnabled(false);
+        bil3.setVisible(false);
+        panel.setVisible(false);
+        b3.setVisible(false);
+        b4.setVisible(false);
+        bil1.setVisible(false);
+        bil2.setVisible(false);
+        b1.setVisible(false);
+        b2.setVisible(false);
+        
     }
 
     /**
@@ -29,11 +43,24 @@ public class Praktik2 extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jenis = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        panel = new javax.swing.JPanel();
+        ket = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        pilihanbil = new javax.swing.JComboBox<>();
+        bil1 = new javax.swing.JLabel();
+        b1 = new javax.swing.JTextField();
+        bil2 = new javax.swing.JLabel();
+        b2 = new javax.swing.JTextField();
+        bil3 = new javax.swing.JLabel();
+        b3 = new javax.swing.JTextField();
+        bil4 = new javax.swing.JLabel();
+        b4 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        thasil = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 255, 51));
@@ -47,26 +74,91 @@ public class Praktik2 extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 60, 100, 30);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(200, 70, 130, 20);
+        jenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Penjumlahan", "pengurangan", "perkalian", "Pembagian", " " }));
+        jenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jenisActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jenis);
+        jenis.setBounds(200, 70, 130, 20);
 
         jPanel1.setBackground(new java.awt.Color(0, 255, 204));
         jPanel1.setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel2.setLayout(null);
+        panel.setBackground(new java.awt.Color(204, 204, 255));
+        panel.setLayout(null);
 
-        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(110, 30, 140, 20);
+        ket.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel.add(ket);
+        ket.setBounds(140, 30, 140, 20);
 
         jLabel4.setText("Operasi");
-        jPanel2.add(jLabel4);
+        panel.add(jLabel4);
         jLabel4.setBounds(10, 10, 70, 14);
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(20, 120, 360, 410);
+        jLabel5.setText("Jumlah Bilangan");
+        panel.add(jLabel5);
+        jLabel5.setBounds(10, 80, 100, 20);
+
+        pilihanbil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", " " }));
+        pilihanbil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pilihanbilActionPerformed(evt);
+            }
+        });
+        panel.add(pilihanbil);
+        pilihanbil.setBounds(140, 80, 130, 20);
+
+        bil1.setText("Bilangan 1 ");
+        panel.add(bil1);
+        bil1.setBounds(10, 110, 80, 20);
+
+        b1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b1ActionPerformed(evt);
+            }
+        });
+        panel.add(b1);
+        b1.setBounds(140, 110, 140, 20);
+
+        bil2.setText("Bilangan 2 ");
+        panel.add(bil2);
+        bil2.setBounds(10, 140, 70, 14);
+        panel.add(b2);
+        b2.setBounds(140, 140, 140, 20);
+
+        bil3.setText("Bilangan 3");
+        panel.add(bil3);
+        bil3.setBounds(10, 170, 60, 14);
+        panel.add(b3);
+        b3.setBounds(140, 170, 140, 20);
+
+        bil4.setText("Bilangan 4");
+        panel.add(bil4);
+        bil4.setBounds(10, 200, 60, 14);
+        panel.add(b4);
+        b4.setBounds(140, 200, 140, 20);
+
+        jButton1.setText("Hitung");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        panel.add(jButton1);
+        jButton1.setBounds(80, 240, 110, 23);
+
+        thasil.setEditable(false);
+        thasil.setColumns(20);
+        thasil.setRows(5);
+        jScrollPane1.setViewportView(thasil);
+
+        panel.add(jScrollPane1);
+        jScrollPane1.setBounds(60, 280, 166, 96);
+
+        jPanel1.add(panel);
+        panel.setBounds(20, 120, 360, 410);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 400, 560);
@@ -74,6 +166,133 @@ public class Praktik2 extends javax.swing.JFrame {
         setBounds(0, 0, 416, 596);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        double hsl = 0.0;
+        double a1, a2, a3, a4;
+        a1 = Double.parseDouble(b1.getText().toString());
+        a2 = Double.parseDouble(b2.getText().toString());
+        a3 = Double.parseDouble(b3.getText().toString());
+        a4 = Double.parseDouble(b4.getText().toString());
+        
+        if(jns.equals("Penjumlahan")){
+            if(jml == 2){
+                hsl = a1 + a2;
+                thasil.setText(""+a1+" + "+a2+" = "+hsl);
+            }
+            if(jml == 3){
+                hsl = a1 + a2 + a3 ;
+                thasil.setText(""+a1+" + "+a2+" + "+a3+" = "+hsl);
+            }
+            if(jml == 4){
+                hsl = a1 + a2 + a3 + a4;
+                thasil.setText(""+a1+" + "+a2+" + "+a3+" + "+a4+" = "+hsl);
+            } 
+        }
+        if(jns.equals("pengurangan")){
+            if(jml == 2){
+                hsl = a1 - a2;
+                thasil.setText(""+a1+" - "+a2+" = "+hsl);
+            }
+            if(jml == 3){
+                hsl = a1 - a2 - a3 ;
+                thasil.setText(""+a1+" - "+a2+" - "+a3+" = "+hsl);
+            }
+            if(jml == 4){
+                hsl = a1 - a2 - a3 - a4;
+                thasil.setText(""+a1+" - "+a2+" - "+a3+" - "+a4+" = "+hsl);
+            } 
+        }
+        if(jns.equals("perkalian")){
+            if(jml == 2){
+                hsl = a1 * a2;
+                thasil.setText(""+a1+" x "+a2+" = "+hsl);
+            }
+            if(jml == 3){
+                hsl = a1 * a2 * a3 ;
+                thasil.setText(""+a1+" x "+a2+" x "+a3+" = "+hsl);
+            }
+            if(jml == 4){
+                hsl = a1 * a2 * a3 * a4;
+                thasil.setText(""+a1+" x "+a2+" x "+a3+" x "+a4+" = "+hsl);
+            } 
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void pilihanbilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pilihanbilActionPerformed
+        getJumlah();
+    }//GEN-LAST:event_pilihanbilActionPerformed
+ 
+    private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b1ActionPerformed
+
+    private void jenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisActionPerformed
+     setJenis();
+    }//GEN-LAST:event_jenisActionPerformed
+    
+    public void getJumlah(){
+        if(pilihanbil.getSelectedItem().equals("2")){
+            bil3.setVisible(false);
+            bil4.setVisible(false);
+            b3.setVisible(false);
+            b4.setVisible(false);
+            bil1.setVisible(true);
+            bil2.setVisible(true);
+            b1.setVisible(true);
+            b2.setVisible(true);
+            jml = 2;
+        }
+       
+        else if(pilihanbil.getSelectedItem().equals("3")){
+            bil3.setVisible(true);
+            bil4.setVisible(false);
+            b3.setVisible(true);
+            b4.setVisible(false);
+            bil1.setVisible(true);
+            bil2.setVisible(true);
+            b1.setVisible(true);
+            b2.setVisible(true);
+            jml = 3;
+        }
+        else if(pilihanbil.getSelectedItem().equals("4")){
+            bil3.setVisible(true);
+            bil4.setVisible(true);
+            b3.setVisible(true);
+            b4.setVisible(true);
+            bil1.setVisible(true);
+            bil2.setVisible(true);
+            b1.setVisible(true);
+            b2.setVisible(true);
+            jml = 4;
+        }
+    }
+    
+    public void setJenis(){
+        if(jenis.getSelectedItem().equals("Penjumlahan")){
+            jns = "Penjumlahan";
+            ket.setText("Penjumlahan");
+            panel.setVisible(true);
+            pilihanbil.setEnabled(true);
+        }
+        else if(jenis.getSelectedItem().equals("pengurangan")){
+            jns = "Pengurangan";
+            ket.setText("Pengurangan");
+            panel.setVisible(true);
+            pilihanbil.setEnabled(true);
+        }
+        else if(jenis.getSelectedItem().equals("perkalian")){
+            jns = "Perkalian";
+            ket.setText("Perkalian");
+            panel.setVisible(true);
+            pilihanbil.setEnabled(true);
+        }
+        else if(jenis.getSelectedItem().equals("Pembagian")){
+            jns = "Pembagian";
+            ket.setText("Pembagian");
+            panel.setVisible(true);
+            pilihanbil.setEnabled(true);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -110,12 +329,25 @@ public class Praktik2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField b1;
+    private javax.swing.JTextField b2;
+    private javax.swing.JTextField b3;
+    private javax.swing.JTextField b4;
+    private javax.swing.JLabel bil1;
+    private javax.swing.JLabel bil2;
+    private javax.swing.JLabel bil3;
+    private javax.swing.JLabel bil4;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> jenis;
+    private javax.swing.JLabel ket;
+    private javax.swing.JPanel panel;
+    private javax.swing.JComboBox<String> pilihanbil;
+    private javax.swing.JTextArea thasil;
     // End of variables declaration//GEN-END:variables
 }
