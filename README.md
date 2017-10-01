@@ -11,4 +11,4 @@ No.Absen : 08<br>
 
 output dari Program : 
 
-1. ![alt text](
+1. ![alt text](https://github.com/istianaa/Array/blob/master/Array.PNG)
